@@ -1,0 +1,56 @@
+<mapping>
+
+    <class name="nz.co.tommyngo.se325assignment1.hibernate.domain.Bugs">
+        <field name="bugs" type="nz.co.tommyngo.se325assignment1.hibernate.domain.BugTracking" collection="arraylist">
+            <bind-xml name="bug"/>
+        </field>    
+    </class>
+
+    <class name="nz.co.tommyngo.se325assignment1.hibernate.domain.BugTracking" identity="id">
+    
+        <map-to xml="bug" />
+        
+        <field name="id" type="long">
+            <bind-xml name="id" node="element"/>
+        </field>             
+        <field name="reporter" type="string">
+            <bind-xml name="reporter" node="element" />
+        </field>
+        <field name="title" type="string">
+            <bind-xml name="title" node="element" />
+        </field> 
+        <field name="createdDate" type="string" handler="dateHandler">
+            <bind-xml name="createdDate" node="element" />
+        </field> 
+        <field name="priority" type="int">
+            <bind-xml name="priority" node="element" />
+        </field> 
+        <field name="status" type="string">
+            <bind-xml name="status" node="element" />
+        </field> 
+        <field name="assignee" type="string">
+            <bind-xml name="assignee" node="element" />
+        </field> 
+    </class>
+    <class name="nz.co.tommyngo.se325assignment1.hibernate.domain.Assignees">
+        <field name="assignees" type="nz.co.tommyngo.se325assignment1.hibernate.domain.BugAssignee" collection="arraylist">
+            <bind-xml name="assignee"/>
+        </field>    
+    </class>
+    <class name="nz.co.tommyngo.se325assignment1.hibernate.domain.BugAssignee" identity="id">
+    	<map-to xml="assignee" />
+    	<field name="id" type="long">
+            <bind-xml name="id" node="element"/>
+        </field>             
+        <field name="bugId" type="long">
+            <bind-xml name="bugId" node="element" />
+        </field>
+        <field name="positionTitle" type="string">
+            <bind-xml name="positionTitle" node="element" />
+        </field> 
+    </class>
+    
+    <field-handler name="dateHandler" class="nz.co.tommyngo.se325assignment1.xml.handler.DateHandler">
+        <param name="date-format" value="yyyy-MM-dd"/>
+    </field-handler>        
+</mapping>
