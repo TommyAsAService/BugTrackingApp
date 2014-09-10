@@ -4,7 +4,10 @@
 	<jsp:directive.page contentType="text/html;charset=UTF-8" />
 	<jsp:output omit-xml-declaration="yes" />
 	
-	<spring:url value="/bugss" var="homeUrl"/>
-
-    <a href="${homeUrl}">Home</a>
+	<spring:url value="/bug" var="bugUrl"/>
+	<spring:url value="/assignee" var="assigneeUrl"/>
+	<spring:url value="/project" var="projectUrl"/>
+    <a href="${bugUrl}"><h3>Bug Home</h3></a>
+    <a href="${assigneeUrl}"><h3>Assignee Home</h3></a>
+    <a href="${projectUrl}"><h3>Project Home</h3></a>
 </div>

@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import nz.co.tommyngo.se325assignment1.hibernate.domain.BugAssignee;
@@ -22,31 +23,30 @@ private SessionFactory _sessionFactory;
 		_sessionFactory = session;
 	}
 	
-	@Transactional(readOnly=true)
-	@Override
+	@Transactional(propagation=Propagation.REQUIRED)
 	public List<BugAssignee> findAll() {
 		// TODO Auto-generated method stub
 		return _sessionFactory.getCurrentSession().createQuery("from BugAssignee a").list();
 	}
 
-	@Override
+	@Transactional(propagation=Propagation.REQUIRED)
 	public List<BugAssignee> findAllWithDetail() {
 		return _sessionFactory.getCurrentSession().getNamedQuery("BugAssignee.findAllWithDetail").list();
 	}
 
-	@Override
+	@Transactional(propagation=Propagation.REQUIRED)
 	public BugAssignee findAssigneeById(long id) {
 		// TODO Auto-generated method stub
 		return (BugAssignee) _sessionFactory.getCurrentSession().getNamedQuery("BugAssignee.findAssigneeById").setParameter("id", id).uniqueResult();
 	}
 
-	@Override
+	@Transactional(propagation=Propagation.REQUIRED)
 	public void save(BugAssignee project) {
 		// TODO Auto-generated method stub
 		_sessionFactory.getCurrentSession().saveOrUpdate(project);
 	}
 
-	@Override
+	@Transactional(propagation=Propagation.REQUIRED)
 	public void delete(BugAssignee project) {
 		// TODO Auto-generated method stub
 		_sessionFactory.getCurrentSession().delete(project);

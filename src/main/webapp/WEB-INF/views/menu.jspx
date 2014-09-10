@@ -6,8 +6,11 @@
 	<jsp:directive.page contentType="text/html;charset=UTF-8" />
 	<jsp:output omit-xml-declaration="yes" />
 
-	<spring:url value="/bugss?form" var="addBugUrl"/>
-
+	<spring:url value="/bug?form" var="addBugUrl"/>
+	<spring:url value="/assignee?form" var="addAssigneeUrl"/>
+	<spring:url value="/project?form" var="addProjectUrl"/>
     <h3>Menu</h3>
     <a href="${addBugUrl}"><h3>New Bug</h3></a>
+    <a href="${addAssigneeUrl}"><h3>New Assignee</h3></a>
+    <a href="${addProjectUrl}"><h3>New Project</h3></a>
 </div>

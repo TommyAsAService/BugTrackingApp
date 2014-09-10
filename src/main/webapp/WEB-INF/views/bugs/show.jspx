@@ -34,7 +34,23 @@
             <tr>
                 <td>Reporter</td>
                 <td>${bug.reporter}</td>
-            </tr>                                                                                                      
+            </tr>   
+             <tr>
+            	<td>Created Date</td>
+            	<td><joda:format value = "${bug.createdDate}" pattern="yyyy-MM-dd" /> </td>		
+            </tr>  
+            <tr>
+            	<td>Priority</td>
+            	<td>${bug.priority}</td>					
+            </tr>	 
+            <tr>
+	            <td>Status</td>
+	            <td>${bug.status}</td>
+            </tr>        
+            <tr>
+	            <td>Assignee</td>
+	            <td>${bug.assignee}</td>
+            </tr>                                                                                                                
         </table>         
        
         <a href="${editBugUrl}/${bug.id}?form">Edit bug</a>     

@@ -7,32 +7,27 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>  
     
-    <spring:url value="/assignee" var="showAssigneeUrl" />
-    <spring:url value="/bug" var="showBugUrl"/>
+    <spring:url value="/project" var="showProjectUrl" />
     
-    <h1>Assignee Listing</h1>
+    <h1>Project Listing</h1>
     
-    <c:if test="${not empty assignees}">
+    <c:if test="${not empty projects}">
     	<table>
     		<thead>
     			<tr>
     				<th>ID</th>
-    				<th>Bug ID</th>
-    				<th>Name</th>
-    				<th>Position</th>
+    				<th>Project Name</th>
+    				<th>Description</th>
     			</tr>
     		</thead>
     		<tbody>
-    			<c:forEach items="${assignees}" var="assignee">
+    			<c:forEach items="${projects}" var="project">
     				<tr>
     					<td>
-    						<a href="${showAssigneeUrl}/${assignee.id}">${assignee.id}</a>
+    						<a href="${showProjectUrl}/${project.id}">${project.id}</a>
     					</td>
-    					<td>
-    						<a href="${showBugUrl}/${assignee.bugId}">${assignee.bugId}</a>
-						</td>
-    					<td>${assignee.assignee}</td>
-    					<td>${assignee.position}</td>
+    					<td>${project.projectName}</td>
+    					<td>${project.projectDescription}</td>
     				</tr>
     			</c:forEach>
     		</tbody>

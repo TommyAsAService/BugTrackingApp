@@ -7,43 +7,34 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     
-    <c:set var="formTitle" value="Update Assignee" />
+    <c:set var="formTitle" value="Update Project" />
 
     <h1>${formTitle}</h1>
 
-    <div id="assigneeUpdate">
-    <form:form modelAttribute="assignee" id="assigneeUpdateForm" method="post">
+    <div id="projectUpdate">
+    <form:form modelAttribute="project" id="projectUpdateForm" method="post">
 
         <c:if test="${not empty message}">
             <div id="message" class="${message.type}">${message.message}</div>
-        </c:if>
+        </c:if>  
 
-        <form:label path="bugId">
-           Bug ID
+        <form:label path="projectName">
+            Project Name
         </form:label>
-        <form:input path="bugId" />
+        <form:input path="projectName" id="projectName"/>    
         <div>
-            <form:errors path="bugId" cssClass="bugId" />
-        </div>
-        <p/>    
-
-        <form:label path="assignee">
-            Name
-        </form:label>
-        <form:input path="assignee" id="assignee"/>    
-        <div>
-            <form:errors path="assignee" cssClass="error" />
+            <form:errors path="projectName" cssClass="error" />
         </div>        
         <p/>
         
-        <form:label path="position">
-            Position
+        <form:label path="projectDescription">
+            Description
         </form:label>
-        <form:input path="position" id="position"/>
+        <form:textarea cols="60" rows="8" path="projectDescription" id="projectDescription"/>
         <div>
-            <form:errors path="position" cssClass="error" />
+            <form:errors path="projectDescription" cssClass="error" />
         </div>        
-        <p/>            
+        <p/>
         
         <button type="submit" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
             <span class="ui-button-text">Save</span>

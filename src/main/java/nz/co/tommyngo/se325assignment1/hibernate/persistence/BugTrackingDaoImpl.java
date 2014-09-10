@@ -11,6 +11,7 @@ import javax.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 
@@ -27,20 +28,20 @@ public class BugTrackingDaoImpl implements BugTrackingDao {
 		_logger.debug("SessionFactory class: " + session.getClass().getName());
 	}
 	
-	@Transactional(readOnly=true)
+	@Transactional(propagation=Propagation.REQUIRED)
 	public List<BugTracking> findAll() {
 		return _sessionFactory.getCurrentSession().createQuery("from BugTracking b").list();
 	}
-
+	@Transactional(propagation=Propagation.REQUIRED)
 	public BugTracking findBugById(long id) {
 		return (BugTracking) _sessionFactory.getCurrentSession().getNamedQuery("BugTracking.findBugById").setParameter("id", id).uniqueResult();
 	}
-
+	@Transactional(propagation=Propagation.REQUIRED)
 	public void save(BugTracking bug) {
 		_sessionFactory.getCurrentSession().saveOrUpdate(bug);
 		_logger.info("Bug saved with id: " + bug.getId());
 	}
-
+	@Transactional(propagation=Propagation.REQUIRED)
 	public void delete(BugTracking bug) {
 		_sessionFactory.getCurrentSession().delete(bug);
 		_logger.info("Bug deleted with id: " + bug.getId());
@@ -51,11 +52,4 @@ public class BugTrackingDaoImpl implements BugTrackingDao {
 		// TODO Auto-generated method stub
 		return _sessionFactory.getCurrentSession().getNamedQuery("BugTracking.findAllWithDetail").list();
 	}
-
-	public List<BugTracking> findBugByAssignee(String name) {
-		// TODO Auto-generated method stub
-		return (List<BugTracking>) _sessionFactory.getCurrentSession( ).
-		getNamedQuery( "BugAssignee.findBugByAssignee" ).setParameter( "name", name).list();
-	}
-
 }

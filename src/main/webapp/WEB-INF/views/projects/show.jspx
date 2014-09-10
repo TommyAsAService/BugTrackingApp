@@ -8,11 +8,11 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     
-    <spring:url value="/assignee" var="editAssigneeUrl"/>
-	
-    <h1>Assignee Information</h1>
+    <spring:url value="/project" var="editProjectUrl"/>
 
-    <div id="assigneeInfo">
+    <h1>Project Information</h1>
+
+    <div id="projectInfo">
 
         <c:if test="${not empty message}">
             <div id="message" class="${message.type}">${message.message}</div>
@@ -21,23 +21,20 @@
         <table>
             <tr>
                 <td>ID</td>
-                <td>${assignee.id}</td>
+                <td>${project.id}</td>
             </tr>
             <tr>
-                <td>Bug ID</td>
-                <td>${assignee.bugId}</td>
+                <td>Project Name</td>
+                <td>${project.projectName}</td>
             </tr>   
             <tr>
-                <td>Name</td>
-                <td>${assignee.assignee}</td>
-            </tr>
-            <tr>
-                <td>Position</td>
-                <td>${assignee.position}</td>
-            </tr>                                                                                                      
+                <td>Description</td>
+                <td>${project.projectDescription}</td>
+            </tr>                                                                                                        
         </table>         
        
-        <a href="${editAssigneeUrl}/${assignee.id}?form">Edit Assignee</a>                  
+        <a href="${editProjectUrl}/${project.id}?form">Edit project</a>     
+                      
     </div>
 
 </div>

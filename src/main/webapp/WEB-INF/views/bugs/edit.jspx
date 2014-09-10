@@ -17,18 +17,9 @@
         <c:if test="${not empty message}">
             <div id="message" class="${message.type}">${message.message}</div>
         </c:if>
-
-        <form:label path="id">
-            Id
-        </form:label>
-        <form:input path="id" />
-        <div>
-            <form:errors path="id" cssClass="error" />
-        </div>
-        <p/>
-
+        
         <form:label path="projectId">
-           id
+           Project ID
         </form:label>
         <form:input path="projectId" />
         <div>
@@ -37,7 +28,7 @@
         <p/>    
 
         <form:label path="reporter">
-            reporter
+            Reporter
         </form:label>
         <form:input path="reporter" id="reporter"/>    
         <div>
@@ -46,13 +37,40 @@
         <p/>
         
         <form:label path="title">
-            title
+            Title
         </form:label>
         <form:textarea cols="60" rows="8" path="title" id="title"/>
         <div>
             <form:errors path="title" cssClass="error" />
         </div>        
-        <p/>            
+        <p/>
+        
+         <form:label path="assignee">
+           	Assignee
+        </form:label>
+        <form:input path="assignee" id="assignee"/>
+        <div>
+            <form:errors path="assignee" cssClass="error" />
+        </div>        
+        <p/>
+        
+         <form:label path="priority">
+           	Priority
+        </form:label>
+        <form:input path="priority" id="priority"/>
+        <div>
+            <form:errors path="priority" cssClass="error" />
+        </div>        
+        <p/> 
+          
+        <form:label path="status">
+           	Status
+        </form:label>
+        <form:input path="status" id="status"/>
+        <div>
+            <form:errors path="status" cssClass="error" />
+        </div>        
+        <p/>                    
         
         <button type="submit" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
             <span class="ui-button-text">Save</span>

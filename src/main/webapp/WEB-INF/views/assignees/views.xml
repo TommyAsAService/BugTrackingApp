@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
-    <definition extends="default" name="bugs/list">
+    <definition extends="default" name="assignees/list">
         <put-attribute name="body"
-            value="/WEB-INF/views/bugs/list.jspx" />
+            value="/WEB-INF/views/assignees/list.jspx" />
     </definition>
-    <definition extends="default" name="bug/show">
+    <definition extends="default" name="assignee/show">
         <put-attribute name="body"
-            value="/WEB-INF/views/bugs/show.jspx" />
+            value="/WEB-INF/views/assignees/show.jspx" />
     </definition>
-    <!-- <definition extends="default" name="contacts/update">
+    <definition extends="default" name="assignee/update">
         <put-attribute name="body"
-            value="/WEB-INF/views/contacts/edit.jspx" />
+            value="/WEB-INF/views/assignees/edit.jspx" />
     </definition>
-    <definition extends="default" name="contacts/create">
+    <definition extends="default" name="assignee/create">
         <put-attribute name="body"
-            value="/WEB-INF/views/contacts/edit.jspx" />
-    </definition>      -->               
+            value="/WEB-INF/views/assignees/edit.jspx" />
+    </definition>            
 </tiles-definitions>

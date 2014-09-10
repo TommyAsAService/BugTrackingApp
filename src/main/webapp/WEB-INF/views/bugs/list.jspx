@@ -8,7 +8,7 @@
     <jsp:output omit-xml-declaration="yes"/>  
     
     <spring:url value="/bug" var="showBugUrl" />
-    
+    <spring:url value="/project" var="showProjectUrl" />
     <h1>Bug Listing</h1>
     
     <c:if test="${not empty bugs}">
@@ -19,6 +19,10 @@
     				<th>Project ID</th>
     				<th>Title</th>
     				<th>Reporter</th>
+    				<th>Created Date</th>
+    				<th>Priority</th>
+    				<th>Status</th>
+    				<th>Assignee</th>
     			</tr>
     		</thead>
     		<tbody>
@@ -27,9 +31,15 @@
     					<td>
     						<a href="${showBugUrl}/${bug.id}">${bug.id}</a>
     					</td>
-    					<td>${bug.projectId}</td>
+    					<td>
+    						<a href="${showProjectUrl}/${bug.projectId}">${bug.projectId}</a>   					
+    					</td>
     					<td>${bug.title}</td>
     					<td>${bug.reporter}</td>
+    					<td><joda:format value = "${bug.createdDate}" pattern="yyyy-MM-dd" /> </td>
+    					<td>${bug.priority}</td>
+    					<td>${bug.status}</td>
+    					<td>${bug.assignee}</td>
     				</tr>
     			</c:forEach>
     		</tbody>

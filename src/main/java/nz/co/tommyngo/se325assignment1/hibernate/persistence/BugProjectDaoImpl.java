@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import nz.co.tommyngo.se325assignment1.hibernate.domain.BugProject;
@@ -21,29 +22,28 @@ public class BugProjectDaoImpl implements BugProjectDao{
 		_sessionFactory = session;
 	}
 	
-	@Transactional(readOnly=true)
+	@Transactional(propagation=Propagation.REQUIRED)
 	public List<BugProject> findAll() {
 		return _sessionFactory.getCurrentSession().createQuery("from BugProject p").list();
 	}
-
-	@Override
+	@Transactional(propagation=Propagation.REQUIRED)
 	public List<BugProject> findAllWithDetail() {
 		return _sessionFactory.getCurrentSession().getNamedQuery("BugProject.findAllWithDetail").list();
 	}
 
-	@Override
+	@Transactional(propagation=Propagation.REQUIRED)
 	public BugProject findProjectById(long id) {
 		// TODO Auto-generated method stub
 		return (BugProject) _sessionFactory.getCurrentSession().getNamedQuery("BugProject.findProjectById").setParameter("id", id).uniqueResult();
 	}
 
-	@Override
+	@Transactional(propagation=Propagation.REQUIRED)
 	public void save(BugProject project) {
 		// TODO Auto-generated method stub
 		_sessionFactory.getCurrentSession().saveOrUpdate(project);
 	}
 
-	@Override
+	@Transactional(propagation=Propagation.REQUIRED)
 	public void delete(BugProject project) {
 		// TODO Auto-generated method stub
 		_sessionFactory.getCurrentSession().delete(project);

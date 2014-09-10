@@ -21,7 +21,7 @@ public class Message {
 	public static Message createSuccessfulSaveMessage() {
 		Message message = new Message();
 		message._type = SUCCESS;
-		message._message = "Contact saved successfully";
+		message._message = "Successfully saved";
 		return message;
 	}
 	
@@ -31,7 +31,7 @@ public class Message {
 	public static Message createFailureSaveMessage() {
 		Message message = new Message();
 		message._type = FAIL;
-		message._message = "Failed to save contact";
+		message._message = "Failed to save";
 		return message;
 	}
 	

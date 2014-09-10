@@ -12,17 +12,17 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 import org.springframework.web.client.RestTemplate;
 
 public class RestfulClientMain {
-	private static final String URL_GET_ALL_BUGS= "http://localhost:8080/spring-utility/bugs";
-	private static final String URL_GET_BUG_BY_ID = "http://localhost:8080/spring-utility/bugs/{id}";
-	private static final String URL_CREATE_BUG = "http://localhost:8080/spring-utility/bugs/";
-	private static final String URL_UPDATE_BUG = "http://localhost:8080/spring-utility/bugs/{id}";
-	private static final String URL_DELETE_BUG = "http://localhost:8080/spring-utility/bugs/{id}";
+	private static final String URL_GET_ALL_BUGS= "http://localhost:8080/bugtracking/bugs";
+	private static final String URL_GET_BUG_BY_ID = "http://localhost:8080/bugtracking/bugs/{id}";
+	private static final String URL_CREATE_BUG = "http://localhost:8080/bugtracking/bugs/";
+	private static final String URL_UPDATE_BUG = "http://localhost:8080/bugtracking/bugs/{id}";
+	private static final String URL_DELETE_BUG = "http://localhost:8080/bugtracking/bugs/{id}";
 	
-	private static final String URL_GET_ALL_ASSIGNEES= "http://localhost:8080/spring-utility/assignees";
-	private static final String URL_GET_ASSIGNEE_BY_ID = "http://localhost:8080/spring-utility/assignees/{id}";
-	private static final String URL_CREATE_ASSIGNEE = "http://localhost:8080/spring-utility/assignees/";
-	private static final String URL_UPDATE_ASSIGNEE = "http://localhost:8080/spring-utility/assignees/{id}";
-	private static final String URL_DELETE_ASSIGNEE = "http://localhost:8080/spring-utility/assignees/{id}";	
+	private static final String URL_GET_ALL_ASSIGNEES= "http://localhost:8080/bugtracking/assignees";
+	private static final String URL_GET_ASSIGNEE_BY_ID = "http://localhost:8080/bugtracking/assignees/{id}";
+	private static final String URL_CREATE_ASSIGNEE = "http://localhost:8080/bugtracking/assignees/";
+	private static final String URL_UPDATE_ASSIGNEE = "http://localhost:8080/bugtracking/assignees/{id}";
+	private static final String URL_DELETE_ASSIGNEE = "http://localhost:8080/bugtracking/assignees/{id}";	
 	
 	public static void main(String[] args) {
 		
@@ -46,16 +46,16 @@ public class RestfulClientMain {
 		System.out.println(bug);
 		System.out.println("");
 		
-//		// Test update contact
-//		bug = restTemplate.getForObject(URL_UPDATE_BUG, BugTracking.class, 1);
-//		bug.setReporter("Kim Fung");
-//		bug.setAssignee("Tommy");
-//		bug.setPriority(1);
-//		bug.setProjectId(1);
-//		System.out.println("Testing update bug by id :");
-//		restTemplate.put(URL_UPDATE_BUG, bug, 1);
-//		System.out.println("Bug update successfully: " + bug);
-//		System.out.println("");	
+		// Test update contact
+		bug = restTemplate.getForObject(URL_UPDATE_BUG, BugTracking.class, 2);
+		bug.setReporter("Kim Fung");
+		bug.setAssignee("Tommy");
+		bug.setPriority(1);
+		bug.setProjectId(1);
+		System.out.println("Testing update bug by id :");
+		restTemplate.put(URL_UPDATE_BUG, bug, 1);
+		System.out.println("Bug update successfully: " + bug);
+		System.out.println("");	
 		
 		// Testing delete contact
 		restTemplate.delete(URL_DELETE_BUG, 1);
@@ -90,13 +90,15 @@ public class RestfulClientMain {
 		System.out.println(assignee);
 		System.out.println("");
 		
-//		// Test update contact
-//		assignee = restTemplate.getForObject(URL_UPDATE_ASSIGNEE, BugAssignee.class, 1);
-//		assignee.setAssignee("Kung Fu");;
-//		System.out.println("Testing update assignee by id :");
-//		restTemplate.put(URL_UPDATE_BUG, assignee, 1);
-//		System.out.println("Assignee update successfully: " + assignee);
-//		System.out.println("");	
+		// Test update contact
+		assignee = restTemplate.getForObject(URL_UPDATE_ASSIGNEE, BugAssignee.class, 1);
+		assignee.setAssignee("Kung Fu");
+		assignee.setPosition("Leader");
+		assignee.setBugId(1);
+		System.out.println("Testing update assignee by id :");
+		restTemplate.put(URL_UPDATE_ASSIGNEE, assignee, 1);
+		System.out.println("Assignee update successfully: " + assignee);
+		System.out.println("");	
 //		
 		// Testing delete contact
 		restTemplate.delete(URL_DELETE_ASSIGNEE, 2);

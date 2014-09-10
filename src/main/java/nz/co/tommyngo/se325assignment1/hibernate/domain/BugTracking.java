@@ -160,8 +160,7 @@ public class BugTracking implements Serializable {
 		this._assignee = assignee;
 	}
 	@OneToOne(mappedBy="bug",
-			  cascade=CascadeType.ALL,
-			  orphanRemoval = true,
+			  cascade={CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
 			  targetEntity = BugAssignee.class,
 			  fetch=FetchType.EAGER)
 	public BugAssignee getBugAssignee(){

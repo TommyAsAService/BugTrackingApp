@@ -8,7 +8,6 @@ import nz.co.tommyngo.se325assignment1.hibernate.domain.BugTracking;
 public interface BugTrackingDao {
 	public List<BugTracking> findAll();
 	public List<BugTracking> findAllWithDetail();
-	public List<BugTracking> findBugByAssignee(String name);
 	public BugTracking findBugById(long i);
 	
 	public void save(BugTracking bug);
