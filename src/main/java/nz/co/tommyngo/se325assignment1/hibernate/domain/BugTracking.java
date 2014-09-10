@@ -153,6 +153,9 @@ public class BugTracking implements Serializable {
 	
 	@Column(name= "ASSIGNEE_ID")
 	public String getAssignee(){
+		if (_bugAssignee != null){
+			return _bugAssignee.getAssignee();
+		}
 		return _assignee;
 	}
 	
@@ -160,7 +163,7 @@ public class BugTracking implements Serializable {
 		this._assignee = assignee;
 	}
 	@OneToOne(mappedBy="bug",
-			  cascade={CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
+			  cascade={CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.ALL},
 			  targetEntity = BugAssignee.class,
 			  fetch=FetchType.EAGER)
 	public BugAssignee getBugAssignee(){
