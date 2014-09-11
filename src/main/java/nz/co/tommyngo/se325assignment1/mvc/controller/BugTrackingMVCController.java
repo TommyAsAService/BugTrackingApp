@@ -30,13 +30,15 @@ public class BugTrackingMVCController {
 	 * Handler method to process URLs that end with "/bugs" and that are invoked by HTTP GET 
 	 * methods.
 	 * @param uiModel the model supplied the MVC framework. This will be populated with a list of 
-	 *        Contact objects.
+	 *        bug objects.
 	 * @return logical name of the view to render the model.
 	 */	
 	@RequestMapping(method=RequestMethod.GET)
 	public String list(Model uiModel){
+		_logger.info("Process form GET list");
 		List<BugTracking> bugs = bugDao.findAllWithDetail();
 		uiModel.addAttribute("bugs", bugs);
+		_logger.info("Process form GET list successful");
 		return "bugs/list";
 	}
 	
@@ -45,34 +47,35 @@ public class BugTrackingMVCController {
 	 * methods. This method finds a Bug with the specified id and adds it to the model.
 	 * @param id the unique id of the Bug required.
 	 * @param uiModel the model that is supplied by the MVC framework and which will be used to 
-	 *        store the Contact.
+	 *        store the bug.
 	 * @return logical name of the view to render the model.
 	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public String show(@PathVariable("id") Long id, Model uiModel) {
-		// Lookup the Contact.
+		_logger.info("Process form GET show");
+		// Lookup the bug.
 		BugTracking bug = bugDao.findBugById(id);
 		
-		// Add the Contact to the model.
+		// Add the bug to the model.
 		uiModel.addAttribute("bug", bug);
-		
+		_logger.info("Process form GET show successful");
 		// Return the logical view name that will render the model.
 		return "bug/show";
 	}
 	
 	/**
-	 * Handler method to process URLs ending with /contacts/<id>, that are invoked by HTTP POST
+	 * Handler method to process URLs ending with /bugs/<id>, that are invoked by HTTP POST
 	 * methods, and which are a query parameter named "form". The purpose of this method is to 
-	 * update an existing and specified Contact based on form data that is submitted with the POST 
+	 * update an existing and specified bug based on form data that is submitted with the POST 
 	 * request.
-	 * @param contact the Contact object, created by the MCV framework, that is represented by the
+	 * @param bug the bug object, created by the MCV framework, that is represented by the
 	 *        POSTed content.
 	 * @param bindingResult stores any errors associated with failed validation constraints. The 
 	 *        MVC framework automatically applies validation constraints to the freshly created
-	 *        Contact object and populated the BindingResult if errors are detected. 
+	 *        bug object and populated the BindingResult if errors are detected. 
 	 * @param uiModel the model that is supplied by the MVC framework. This method adds status 
 	 *        messages to the model that will be rendered in a view. In cases where validation
-	 *        constraints have failed, this method also adds the Contact object to the model so that
+	 *        constraints have failed, this method also adds the bug object to the model so that
 	 *        its properties (name, DoB etc.) can be displayed and edited.
 	 * @param redirectAttributes holds a status message temporarily during a HTTP redirect response.
 	 *        When the browser requests the redirected page, the status message is available to be
@@ -85,53 +88,53 @@ public class BugTrackingMVCController {
 		if(bindingResult.hasErrors()) {
 			// Validation constraint(s) have failed.
 			
-			// Add the Contact that has been POSTed (and edited incorrectly by the user) to the 
+			// Add the bug that has been POSTed (and edited incorrectly by the user) to the 
 			// model.
 			uiModel.addAttribute("bug", bug);
 			
-			// Add a Message to the model explaining that the Contact could not be saved due to
+			// Add a Message to the model explaining that the bug could not be saved due to
 			// failed validation constraints.
 			Message message = Message.createFailureSaveMessage();
 			uiModel.addAttribute("message", message);
 			
 			// Return the logical name of a view that will redisplay the form, populated with the 
-			// Contact object and message.
+			// bug object and message.
 			return "bug/update";
 		}
 		
-		_logger.info("Updating contact: " + bug);
+		_logger.info("Updating Bug: " + bug);
 		// Validation constraints have passed, so create a "successful save" message and save the
-		// Contact.
+		// bug.
 		Message message = Message.createSuccessfulSaveMessage();
 		bugDao.save(bug);
 		
 		// Use a RedirectAttribute to temporarily hold the message during the redirect.
 		redirectAttributes.addFlashAttribute("message", message);
 		
-		// Redirect the browser to a page that displays the updated Contact.
+		// Redirect the browser to a page that displays the updated bug.
 		return "redirect:/bug/" + bug.getId();
 	}
 	
 	/**
-	 * Handler method to process URLs ending with /contacts/<id>, that are invoked by HTTP GET
+	 * Handler method to process URLs ending with /bugs/<id>, that are invoked by HTTP GET
 	 * methods, and which have a query parameter named "form". The purpose of this method is to
-	 * retrieve a form that users can use to edit the specified Contact.
-	 * @param id the id of the Contact to edit.
+	 * retrieve a form that users can use to edit the specified bug.
+	 * @param id the id of the bug to edit.
 	 * @param uiModel the model supplied by the MVC framework. This method will populate the model
-	 * with the required Contact so that is can be included in the view.  
+	 * with the required bug so that is can be included in the view.  
 	 * @return logical view name.
 	 */
 	@RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
 	public String updateForm(@PathVariable("id") Long id, Model uiModel) {
-		// Lookup the Contact and add it to the model.
+		// Lookup the bug and add it to the model.
 		uiModel.addAttribute("bug", bugDao.findBugById(id));
 		
 		return "bug/update";
 	}
 	
 	/**
-	 * Similar to handler method update(), but enables new Contacts to be created as opposed to 
-	 * existing Contacts being edited.
+	 * Similar to handler method update(), but enables new bugs to be created as opposed to 
+	 * existing bugs being edited.
 	 */
 	@RequestMapping(params = "form", method = RequestMethod.POST)
 	public String create(@Valid BugTracking bug, BindingResult bindingResult, Model uiModel, RedirectAttributes redirectAttributes) {
@@ -152,7 +155,7 @@ public class BugTrackingMVCController {
 	}
 	
 	/**
-	 * Similar to handler method updateForm(), but returns a form that allows new Contacts to be
+	 * Similar to handler method updateForm(), but returns a form that allows new bugs to be
 	 * created rather than edited.
 	 */
 	@RequestMapping(params = "form", method = RequestMethod.GET)

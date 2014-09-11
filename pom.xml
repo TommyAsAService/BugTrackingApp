@@ -14,6 +14,7 @@
 		<spring.framework.version>3.2.9.RELEASE</spring.framework.version>
 		<java-version>1.7</java-version>
 		<org.slf4j-version>1.7.7</org.slf4j-version>
+		<aspectj.version>1.6.11</aspectj.version>
 	</properties>
 	
 	<dependencies>
@@ -40,11 +41,28 @@
 				 </exclusion>
 			</exclusions>
 		</dependency>
+		<!-- AOP + AspectJ -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aop</artifactId>
 			<version>${spring.framework.version}</version>
 		</dependency>
+		<dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>${aspectj.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>2.2</version>
+        </dependency>                
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj.version}</version>
+        </dependency> 
+        
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>

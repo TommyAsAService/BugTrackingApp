@@ -35,6 +35,10 @@
             <bind-xml name="assignee" node="element" />
         </field> 
     </class>
+    
+    <field-handler name="dateHandler" class="nz.co.tommyngo.se325assignment1.xml.handler.DateHandler">
+        <param name="date-format" value="yyyy-MM-dd"/>
+    </field-handler> 
 
     <class name="nz.co.tommyngo.se325assignment1.hibernate.domain.Assignees">
         <field name="assignees" type="nz.co.tommyngo.se325assignment1.hibernate.domain.BugAssignee" collection="arraylist">
@@ -60,7 +64,25 @@
         </field> 
     </class>
     
-    <field-handler name="dateHandler" class="nz.co.tommyngo.se325assignment1.xml.handler.DateHandler">
-        <param name="date-format" value="yyyy-MM-dd"/>
-    </field-handler>        
+    <class name="nz.co.tommyngo.se325assignment1.hibernate.domain.Projects">
+        <field name="projects" type="nz.co.tommyngo.se325assignment1.hibernate.domain.BugProject" collection="arraylist">
+            <bind-xml name="project"/>
+        </field>    
+    </class>
+    <class name="nz.co.tommyngo.se325assignment1.hibernate.domain.BugProject" identity="id">
+    	<map-to xml="project" />
+    	<field name="id" type="long">
+            <bind-xml name="id" node="element"/>
+        </field>             
+        <field name="projectName" type="string">
+            <bind-xml name="projectName" node="element" />
+        </field> 
+        <field name="projectDescription" type="string">
+            <bind-xml name="projectDescription" node="element" />
+        </field> 
+        <field name="bugs" type="nz.co.tommyngo.se325assignment1.hibernate.domain.BugTracking" collection="set">
+            <bind-xml name="bugs" node="element" />
+        </field> 
+    </class>
+        
 </mapping>
