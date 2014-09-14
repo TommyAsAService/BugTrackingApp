@@ -24,7 +24,7 @@ public class BugProjectController {
 	@RequestMapping(method=RequestMethod.GET)
 	@ResponseBody
 	public Projects listProject(WebRequest webRequest){
-		return new Projects(projectDao.findAllWithDetail());
+		return new Projects(projectDao.findAll());
 	}
 	
 	@RequestMapping(value="/", method=RequestMethod.POST)

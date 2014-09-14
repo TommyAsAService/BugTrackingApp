@@ -21,13 +21,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 @RequestMapping(value="/project")
 
-public class BugProjectMVCControlller {
-	final static Logger _logger = LoggerFactory.getLogger(BugProjectMVCControlller.class);
+public class BugProjectMVCController {
+	final static Logger _logger = LoggerFactory.getLogger(BugProjectMVCController.class);
 	@Autowired
 	private BugProjectDao projectDao;
 	
 	/**
-	 * Handler method to process URLs that end with "/bugs" and that are invoked by HTTP GET 
+	 * Handler method to process URLs that end with "/projects" and that are invoked by HTTP GET 
 	 * methods.
 	 * @param uiModel the model supplied the MVC framework. This will be populated with a list of 
 	 *        project objects.
@@ -36,16 +36,16 @@ public class BugProjectMVCControlller {
 	@RequestMapping(method=RequestMethod.GET)
 	public String list(Model uiModel){
 		_logger.info("Process form GET list");
-		List<BugProject> projects = projectDao.findAllWithDetail();
+		List<BugProject> projects = projectDao.findAll();
 		uiModel.addAttribute("projects", projects);
 		_logger.info("Process form GET list successful");
 		return "projects/list";
 	}
 	
 	/**
-	 * Handler method to process URLs ending with /bugs/<id> and that are invoked by HTTP GET 
-	 * methods. This method finds a Bug with the specified id and adds it to the model.
-	 * @param id the unique id of the Bug required.
+	 * Handler method to process URLs ending with /projects/<id> and that are invoked by HTTP GET 
+	 * methods. This method finds a project with the specified id and adds it to the model.
+	 * @param id the unique id of the project required.
 	 * @param uiModel the model that is supplied by the MVC framework and which will be used to 
 	 *        store the project.
 	 * @return logical name of the view to render the model.
@@ -139,7 +139,7 @@ public class BugProjectMVCControlller {
 	 */
 	@RequestMapping(params = "form", method = RequestMethod.POST)
 	public String create(@Valid BugProject project, BindingResult bindingResult, Model uiModel, RedirectAttributes redirectAttributes) {
-		_logger.info("Creating project");		
+		_logger.info("Creating project");
 		if(bindingResult.hasErrors()) {
 			uiModel.addAttribute("project", project);
 			Message message = Message.createFailureSaveMessage();
@@ -161,7 +161,7 @@ public class BugProjectMVCControlller {
 	@RequestMapping(params = "form", method = RequestMethod.GET)
 	public String createForm(Model uiModel) {
 		BugProject project = new BugProject();
-		uiModel.addAttribute(project);
+		uiModel.addAttribute("project",project);
 		return "project/create";
 	}
 }

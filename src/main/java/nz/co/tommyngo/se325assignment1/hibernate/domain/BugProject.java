@@ -1,6 +1,7 @@
 package nz.co.tommyngo.se325assignment1.hibernate.domain;
 import static javax.persistence.GenerationType.IDENTITY;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -21,15 +22,15 @@ import javax.persistence.Table;
 				query="select distinct p from BugProject p where p.id = :id"), 
 				@NamedQuery(name="BugProject.findAllWithDetail", 
 				query="select distinct p from BugProject p left join fetch p.bugs b")})
-public class BugProject {
+public class BugProject implements Serializable{
 	private long _id;
 	private String _name;
 	private String _description;
 	private Set<BugTracking> _bugs = new HashSet<BugTracking>();
 	
 	public BugProject(){
-		
 	}
+	
 	public BugProject(String name){
 		_name = name;
 	}

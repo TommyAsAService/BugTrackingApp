@@ -1,5 +1,7 @@
 insert into project(project_name, project_description) values ('Contact Manager',null);
 insert into project(project_name, project_description) values ('Bug Tracking',null);
+insert into project(project_name, project_description) values ('Scrum Tracking',null);
+insert into project(project_name, project_description) values ('Board Tracking',null);
 
 insert into bug (project_id, reporter, title, created_date, priority, status, assignee_id) values (1, 'Bruce', 'Mixed case URLs cause problem when hosted on UNIX', '2014-03-19', 1, 'New', 'Bruce');
 insert into bug (project_id, reporter, title, created_date, priority, status, assignee_id) values (1, 'Jenna', 'Add option to put count on every fram', '2014-04-01', 2, 'Investigated', 'Shay');

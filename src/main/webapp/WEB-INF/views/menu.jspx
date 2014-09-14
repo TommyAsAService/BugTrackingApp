@@ -10,7 +10,14 @@
 	<spring:url value="/assignee?form" var="addAssigneeUrl"/>
 	<spring:url value="/project?form" var="addProjectUrl"/>
     <h3>Menu</h3>
-    <a href="${addBugUrl}"><h3>New Bug</h3></a>
-    <a href="${addAssigneeUrl}"><h3>New Assignee</h3></a>
-    <a href="${addProjectUrl}"><h3>New Project</h3></a>
+    <a href="${addBugUrl}">
+    	<h3>New Bug</h3>
+    </a>
+    <a href="${addAssigneeUrl}">
+    	<h3>New Assignee</h3>
+    </a>
+    <a href="${addProjectUrl}">
+   		<h3>New Project</h3>
+    </a>
+    
 </div>

@@ -23,15 +23,15 @@ public class MethodLogger {
 	public void logBeforeAdviceBugProjectDaoImpl(JoinPoint joinPoint){
 		_logger.info("Before execute: " + joinPoint.getSignature().getName());
 	}
-	@Before("execution(* nz.co.tommyngo.se325assignment1.mvc.controller.BugProjectMVCControlller.*(..))")
-	public void logBeforeAdviceBugProjectMVCControlller(JoinPoint joinPoint){
+	@Before("execution(* nz.co.tommyngo.se325assignment1.mvc.controller.BugProjectMVCController.*(..))")
+	public void logBeforeAdviceBugProjectMVCController(JoinPoint joinPoint){
 		_logger.info("Before execute: " + joinPoint.getSignature().getName());
 	}
 	@Before("execution(* nz.co.tommyngo.se325assignment1.mvc.controller.BugAssigneeMVCController.*(..))")
 	public void logBeforeAdviceBugAssigneeMVCController(JoinPoint joinPoint){
 		_logger.info("Before execute: " + joinPoint.getSignature().getName());
 	}
-	@Before("execution(* nz.co.tommyngo.se325assignment1.mvc.controller.BugTrackingMVCController.*(..))")
+	@Before("execution(* nz.co.tommyngo.se325assignment1.mvc.controller.BugProjectMVCController.*(..))")
 	public void logBeforeAdviceBugTrackingMVCController(JoinPoint joinPoint){
 		_logger.info("Before execute: " + joinPoint.getSignature().getName());
 	}
@@ -45,6 +45,30 @@ public class MethodLogger {
 	}
 	@Before("execution(* nz.co.tommyngo.se325assignment1.restful.controller.BugTrackingController.*(..))")
 	public void logBeforeAdviceBugTrackingController(JoinPoint joinPoint){
+		_logger.info("Before execute: " + joinPoint.getSignature().getName());
+	}
+	@Before("execution(* nz.co.tommyngo.se325assignment1.hibernate.domain.Assignees.*(..))")
+	public void logBeforeAdviceAssignees(JoinPoint joinPoint){
+		_logger.info("Before execute: " + joinPoint.getSignature().getName());
+	}
+	@Before("execution(* nz.co.tommyngo.se325assignment1.hibernate.domain.BugAssignee.*(..))")
+	public void logBeforeAdviceBugAssignee(JoinPoint joinPoint){
+		_logger.info("Before execute: " + joinPoint.getSignature().getName());
+	}
+	@Before("execution(* nz.co.tommyngo.se325assignment1.hibernate.domain.BugTracking.*(..))")
+	public void logBeforeAdviceBugTracking(JoinPoint joinPoint){
+		_logger.info("Before execute: " + joinPoint.getSignature().getName());
+	}
+	@Before("execution(* nz.co.tommyngo.se325assignment1.hibernate.domain.Bugs.*(..))")
+	public void logBeforeAdviceBugs(JoinPoint joinPoint){
+		_logger.info("Before execute: " + joinPoint.getSignature().getName());
+	}
+	@Before("execution(* nz.co.tommyngo.se325assignment1.hibernate.domain.Projects.*(..))")
+	public void logBeforeAdviceProjects(JoinPoint joinPoint){
+		_logger.info("Before execute: " + joinPoint.getSignature().getName());
+	}
+	@Before("execution(* nz.co.tommyngo.se325assignment1.hibernate.domain.BugProject.*(..))")
+	public void logBeforeAdviceBugProject(JoinPoint joinPoint){
 		_logger.info("Before execute: " + joinPoint.getSignature().getName());
 	}
 	//========================================AFTER ADVICE==========================================================
@@ -61,8 +85,8 @@ public class MethodLogger {
 	public void logAfterAdviceBugProjectDaoImpl(JoinPoint joinPoint){
 		_logger.info(joinPoint.getSignature().getName() + " executed successfully");
 	}
-	@After("execution(* nz.co.tommyngo.se325assignment1.mvc.controller.BugProjectMVCControlller.*(..))")
-	public void logAfterAdviceBugProjectMVCControlller(JoinPoint joinPoint){
+	@After("execution(* nz.co.tommyngo.se325assignment1.mvc.controller.BugProjectMVCController.*(..))")
+	public void logAfterAdviceBugProjectMVCController(JoinPoint joinPoint){
 		_logger.info(joinPoint.getSignature().getName() + " executed successfully");
 	}
 	@After("execution(* nz.co.tommyngo.se325assignment1.mvc.controller.BugAssigneeMVCController.*(..))")

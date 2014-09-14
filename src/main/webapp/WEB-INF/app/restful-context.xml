@@ -13,6 +13,12 @@
 	 					http://www.springframework.org/schema/aop 
 						http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 	
+	<bean id="methodLogger" class="nz.co.tommyngo.se325assignment1.aop.logging.MethodLogger"/>
+	<aop:aspectj-autoproxy>
+        <aop:include name="methodLogger"/>
+    </aop:aspectj-autoproxy>
+	
+	
 	<bean id="bugDao" class="nz.co.tommyngo.se325assignment1.hibernate.persistence.BugTrackingDaoImpl">
 	
 	</bean>
@@ -83,8 +89,8 @@
 				<value>/WEB-INF/layouts/layouts.xml</value>
 				<!-- views.xml defines the additional templates for particular views. -->
 				<value>/WEB-INF/views/bugs/views.xml</value>
-				<value>/WEB-INF/views/assignees/views.xml</value>
 				<value>/WEB-INF/views/projects/views.xml</value>
+				<value>/WEB-INF/views/assignees/views.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -94,10 +100,5 @@
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basename" value="messages" />
 	</bean>
-	<bean id="methodLogger" class="nz.co.tommyngo.se325assignment1.aop.logging.MethodLogger"/>
-	<aop:aspectj-autoproxy>
-        <aop:include name="methodLogger"/>
-    </aop:aspectj-autoproxy>
-	
 	
 </beans>

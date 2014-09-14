@@ -29,10 +29,10 @@
 	</servlet>
 
 	<!-- Ensure that the servlet executes incoming requests that match the pattern "/*". This means
-	     that if the application is hosted within a Web container at path "Contact", and if the 
+	     that if the application is hosted within a Web container at path "bugtracking", and if the 
 	     Web container's domain name is "http://localhost:808", then the servlet will process any
-	     requests of the form: http://localhost:8080/Contact/, 
-	     e.g http://localhost:8080/Contact/contacts.   -->
+	     requests of the form: http://localhost:8080/bugtracking/, 
+	     e.g http://localhost:8080/bugtracking/bugs.   -->
 	<servlet-mapping>
 		<servlet-name>bugsService</servlet-name>
 		<url-pattern>/</url-pattern>
