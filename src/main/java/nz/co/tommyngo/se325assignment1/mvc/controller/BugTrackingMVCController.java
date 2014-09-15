@@ -165,4 +165,12 @@ public class BugTrackingMVCController {
 		return "bug/create";
 	}
 	
+	@RequestMapping(value = "/{id}/delete",method = RequestMethod.GET)
+	public String delete(@PathVariable("id") Long id, Model uiModel, RedirectAttributes redirectAttributes) {
+		_logger.info("Process delete");
+		bugDao.delete(bugDao.findBugById(id));
+
+		return "redirect:/bug/";
+	}
+	
 }

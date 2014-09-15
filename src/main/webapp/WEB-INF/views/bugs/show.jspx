@@ -53,7 +53,9 @@
             </tr>                                                                                                                
         </table>         
        
-        <a href="${editBugUrl}/${bug.id}?form">Edit bug</a>     
+        <a href="${editBugUrl}/${bug.id}?form">Edit bug</a> 
+        <br/>
+        <a href="${editBugUrl}/${bug.id}/delete">Delete bug</a>     
                       
     </div>
 

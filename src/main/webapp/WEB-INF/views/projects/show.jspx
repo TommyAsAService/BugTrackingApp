@@ -34,8 +34,9 @@
             </tr>                                                                                                        
         </table>         
        
-        <a href="${editProjectUrl}/${project.id}?form">Edit project</a>     
-                      
+        <a href="${editProjectUrl}/${project.id}?form">Edit project</a>
+        <br/>     
+        <a href="${editProjectUrl}/${project.id}/delete">Delete project</a>                 
     </div>
 
 </div>

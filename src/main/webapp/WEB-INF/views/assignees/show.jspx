@@ -37,7 +37,9 @@
             </tr>                                                                                                      
         </table>         
        
-        <a href="${editAssigneeUrl}/${assignee.id}?form">Edit Assignee</a>                  
+        <a href="${editAssigneeUrl}/${assignee.id}?form">Edit Assignee</a> 
+        <br/>
+        <a href="${editAssigneeUrl}/${assignee.id}/delete">Delete Assignee</a>               
     </div>
 
 </div>

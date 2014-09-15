@@ -32,16 +32,13 @@ public class BugTrackingDaoImpl implements BugTrackingDao {
 	public List<BugTracking> findAll() {
 		return _sessionFactory.getCurrentSession().createQuery("from BugTracking b").list();
 	}
-	@Transactional(propagation=Propagation.REQUIRED)
 	public BugTracking findBugById(long id) {
 		return (BugTracking) _sessionFactory.getCurrentSession().getNamedQuery("BugTracking.findBugById").setParameter("id", id).uniqueResult();
 	}
-	@Transactional(propagation=Propagation.REQUIRED)
 	public void save(BugTracking bug) {
 		_sessionFactory.getCurrentSession().saveOrUpdate(bug);
 		_logger.info("Bug saved with id: " + bug.getId());
 	}
-	@Transactional(propagation=Propagation.REQUIRED)
 	public void delete(BugTracking bug) {
 		_sessionFactory.getCurrentSession().delete(bug);
 		_logger.info("Bug deleted with id: " + bug.getId());

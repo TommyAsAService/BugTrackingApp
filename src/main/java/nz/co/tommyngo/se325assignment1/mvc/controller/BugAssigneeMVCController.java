@@ -165,4 +165,12 @@ public class BugAssigneeMVCController {
 		uiModel.addAttribute("assignee", assignee);
 		return "assignee/create";
 	}
+	
+	@RequestMapping(value = "/{id}/delete",method = RequestMethod.GET)
+	public String delete(@PathVariable("id") Long id, Model uiModel, RedirectAttributes redirectAttributes) {
+		_logger.info("Process delete");
+		assigneeDao.delete(assigneeDao.findAssigneeById(id));
+
+		return "redirect:/assignee/";
+	}
 }

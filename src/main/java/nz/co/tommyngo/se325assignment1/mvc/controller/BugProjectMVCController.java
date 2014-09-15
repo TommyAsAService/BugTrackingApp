@@ -164,4 +164,12 @@ public class BugProjectMVCController {
 		uiModel.addAttribute("project",project);
 		return "project/create";
 	}
+	
+	@RequestMapping(value = "/{id}/delete",method = RequestMethod.GET)
+	public String delete(@PathVariable("id") Long id, Model uiModel, RedirectAttributes redirectAttributes) {
+		_logger.info("Process delete");
+		projectDao.delete(projectDao.findProjectById(id));
+
+		return "redirect:/project/";
+	}
 }
